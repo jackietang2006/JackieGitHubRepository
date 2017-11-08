@@ -1,1 +1,0 @@
-../bin/netflowDecoder -HOME ../data/client1 -ST 1371162300 -NRP 2

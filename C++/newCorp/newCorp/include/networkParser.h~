@@ -1,0 +1,58 @@
+#ifndef NETWORKPARSER_H
+#define NETWORKPARSER_H
+
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <vector>
+#include <algorithm> 
+#include "parserCommon.h"
+#include <stdio.h>
+#include "cParser.h"
+#include "netflowV9Container.h"
+
+using namespace std;
+
+class networkCfg
+{
+private:
+    char directory[MAX_CHARS_PER_LINE];
+    vector <routerCfg*> rConfigContainer;
+    netflowV9Container gTempCont;
+public:
+    virtual ~networkCfg();
+    // init
+    int initCsv(char* idir);
+    int initTemplateCSV(char* idir);
+    int init(char* idir, routerType rtype);
+    void anonymize (routerNameMap* rNM, routerNameMap* vrfM);
+
+    // get 
+    routerCfg* getRouterByName (char* inName);
+    routerCfg* getRouterByLo0 (uint32_t  inAddr);
+    routerCfg* getRouterByLoopback0 (uint32_t  inAddr);
+    routerCfg* getRouterByIndex (uint32_t  index){ return rConfigContainer[index];}
+    int getRouterIndexByLo0 (uint32_t  inAddr);
+    int getRouterIndexByLoopback0 (uint32_t  inAddr);
+    int getRouterIndexByName (char* inName);
+
+    // print & QC
+    void showRouterList(uint32_t level);
+    int showRouterAndAdjcent (char* inName);
+    void checkConsistency();
+    void printAll();
+    void printAll(FILE* fb);
+    void printAll(FILE* fh, FILE* fd);
+    void printConnections(FILE* fb);
+    void printAll(FILE* fb, uint32_t pr);
+    void printRouterBrief(FILE* fb);
+    void printTemplateAll(FILE* fb);
+    void printLocation(FILE* fb);
+    void printMplsForwardTable(FILE* fb);
+
+    //-----------netflow template
+    netflowV9Container* getTemplateContainer() { return &gTempCont;}
+    void reIndex();
+};
+
+#endif 

@@ -1,6 +1,6 @@
 /*
  * This program is to print out all of the Dearrangements using depth-first recursion.
- * I use the associative map to remember the original ordinal of each elements
+ * I use the associative map to remember the original ordinal of each element
  */
 #include <iostream>
 #include <vector>

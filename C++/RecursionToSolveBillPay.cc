@@ -1,12 +1,21 @@
+/*
+ * Copyright (c) 2017
+ *
+ * You may not use this file except in communication with jackietang2006@gmail.com.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Recursively calculating the number of ways to pay $17
+ * out of $1 coin, $2 coin, $5 coin & bill, $10 coin & bill.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <deque>
-
-/*
- * Recursively calculating the number of ways to pay $17
- * out of $1 coin, $2 coin, $5 coin & bill, $10 coin & bill.
- */
 std::deque<char*> mydeque;
 
 int recur(int amount) {

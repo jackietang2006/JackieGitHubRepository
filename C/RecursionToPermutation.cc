@@ -18,7 +18,7 @@
 
 using namespace std;
 
-vector< deque<char> > mVector;
+vector< deque<char>> mVector;
 deque<char>           mDeque;
 
 int recur_perm(vector<char>& aVec) {
